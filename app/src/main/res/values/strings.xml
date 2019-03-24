@@ -1,0 +1,79 @@
+<resources>
+    <string name="app_name">AndroidBlockchain</string>
+    <string name="title_activity_block">BlockActivity</string>
+    <string name="title_activity_login">Sign in</string>
+    <string name="logo_description">Android Blockchain Logo</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password (optional)</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+
+    <!-- for register activity -->
+    <string name="reg_email_hint">E-Mail</string>
+    <string name="reg_pw_hint">Password</string>
+    <string name="reg_button">Register Me</string>
+    <string name="reg_login_button">Returning User</string>
+    <string name="reg_forgot_pw">I Forgot My Password</string>
+
+    <!-- for login activity -->
+    <string name="login_email_hint">E-Mail</string>
+    <string name="login_pw_hint">Password</string>
+    <string name="login_button">Login</string>
+    <string name="login_forgot_pw">I Forgot My Password</string>
+    <string name="login_register">Register</string>
+
+    <!-- for account activity -->
+    <string name="account_delete">Delete User</string>
+    <string name="account_logout">Logout</string>
+
+    <!-- forgot password activity -->
+    <string name="new_password_hint">E-Mail</string>
+    <string name="new_password_button">Send New Password Link</string>
+    <string name="b2login">Back to Login</string>
+
+    <!-- for blockchain activity -->
+    <string name="blockchain_activity_header">Blocks</string>
+
+    <!-- for block card -->
+    <string name="bc_index">Block Index: </string>
+    <string name="bc_time">Timestamp: </string>
+    <string name="bc_hash">Hash: </string>
+    <string name="bc_message">Data Message: </string>
+    <string name="bc_load">Loading...</string>
+
+    <!-- for view block activity -->
+    <string name="block_activity_header">Block Details</string>
+    <string name="block_index">Block Index: </string>
+    <string name="block_time">Block Created At: </string>
+    <string name="block_hash">Block Hash: </string>
+    <string name="block_prev">Hash of Previous Block: </string>
+    <string name="block_data">Block Data: </string>
+    <string name="block_attach">Attachment</string>
+
+    <!-- for new block activity -->
+    <string name="new_message">Block Message</string>
+    <string name="new_message_hint">Enter a message for the block...</string>
+    <string name="new_attach_header">Add an image file to the Block</string>
+    <string name="new_choose">Choose Image</string>
+    <string name="new_mine_button">Mine Block</string>
+    <string name="preview">Image Preview</string>
+
+    <!-- for widget (before) -->
+    <string name="widget_before_header">Fetching Blockchain Stats. Please wait...</string>
+    <!-- for widget (after) -->
+    <string name="widget_intro">Blockchain Stats</string>
+    <string name="widget_placeholder">Loading...</string>
+
+
+
+
+</resources>

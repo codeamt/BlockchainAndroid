@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "241496723517",
+    "firebase_url": "https://android-blockchain.firebaseio.com",
+    "project_id": "android-blockchain",
+    "storage_bucket": "android-blockchain.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:241496723517:android:a694ce4cc825054b",
+        "android_client_info": {
+          "package_name": "com.example.annmargaret.androidblockchain"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "241496723517-sf21em5s89sbd13ih2g4eh2mueo03l03.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.annmargaret.androidblockchain",
+            "certificate_hash": "2b6868d57b94881a3f985e8085d3489cac160af9"
+          }
+        },
+        {
+          "client_id": "241496723517-lcpq5vbk8aeig79cug9nl1ppri4jchgp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyArbh8zD6TVVuFHSxaQqtwvGqO1M2xcar0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "241496723517-lcpq5vbk8aeig79cug9nl1ppri4jchgp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

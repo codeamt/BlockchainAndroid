@@ -1,0 +1,34 @@
+<resources>
+    <dimen name="fab_margin">16dp</dimen>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="space0dp">0dp</dimen>
+    <dimen name="space2dp">2dp</dimen>
+    <dimen name="space3dp">3dp</dimen>
+    <dimen name="space4dp">4dp</dimen>
+    <dimen name="space5dp">5dp</dimen>
+    <dimen name="space8dp">8dp</dimen>
+    <dimen name="space10dp">10dp</dimen>
+    <dimen name="space15dp">15dp</dimen>
+    <dimen name="size16sp">16sp</dimen>
+    <dimen name="space16dp">16dp</dimen>
+    <dimen name="size18sp">18sp</dimen>
+    <dimen name="size20sp">20sp</dimen>
+    <dimen name="space20dp">20dp</dimen>
+    <dimen name="space25dp">25dp</dimen>
+    <dimen name="space30dp">30dp</dimen>
+    <dimen name="space40dp">40dp</dimen>
+    <dimen name="space45dp">45dp</dimen>
+    <dimen name="space50dp">50dp</dimen>
+    <dimen name="space80dp">80dp</dimen>
+    <dimen name="space100dp">100dp</dimen>
+    <dimen name="space140dp">140dp</dimen>
+    <dimen name="space150dp">150dp</dimen>
+    <dimen name="space200dp">200dp</dimen>
+    <dimen name="space225dp">225dp</dimen>
+    <dimen name="space250dp">250dp</dimen>
+    <dimen name="space300dp">300dp</dimen>
+
+
+</resources>

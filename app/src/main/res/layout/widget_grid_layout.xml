@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ImageView
+        android:id="@+id/widget_img"
+        android:layout_width="@dimen/space50dp"
+        android:layout_height="@dimen/space50dp"
+        android:contentDescription="@string/logo_description"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/space10dp"
+        android:src="@drawable/ic_blockchain"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:gravity="center_vertical"
+        android:id="@+id/widget_intro"
+        android:layout_below="@+id/widget_img"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Title"
+        android:textColor="#000"
+        android:text="@string/widget_intro" />
+    <GridView
+        android:id="@+id/widget_grid_view"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/space150dp"
+        android:numColumns="1"
+        android:columnWidth="@dimen/space25dp"
+        android:layout_margin="@dimen/space2dp"
+        android:horizontalSpacing="@dimen/space5dp"
+        android:verticalSpacing="@dimen/space5dp"
+        android:layout_below="@+id/widget_intro"
+        android:padding="@dimen/space10dp"
+        android:background="@drawable/widget_background_active"
+        />
+</RelativeLayout>

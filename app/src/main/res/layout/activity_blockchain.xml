@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#333"
+    android:padding="@dimen/space16dp"
+    android:elevation="@dimen/space4dp"
+    android:orientation="vertical"
+    tools:context=".activities.BlockchainActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/space50dp"
+        android:id="@+id/appBarMain"
+        android:elevation="@dimen/space4dp"
+        android:layout_marginTop="@dimen/space0dp"
+        android:layout_marginBottom="@dimen/space0dp"
+        android:theme="@style/AppTheme.AppBarOverlay">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textSize="@dimen/size18sp"
+            android:textAlignment="center"
+            android:textColor="@color/colorAccent"
+            android:padding="@dimen/space10dp"
+            android:text="@string/blockchain_activity_header"/>
+    </android.support.design.widget.AppBarLayout>
+    <android.support.v7.widget.RecyclerView
+        android:background="@color/colorPrimaryDark"
+        android:elevation="@dimen/space4dp"
+        android:layout_marginTop="@dimen/space20dp"
+        android:paddingBottom="@dimen/space5dp"
+        android:paddingLeft="@dimen/space5dp"
+        android:paddingRight="@dimen/space5dp"
+        android:id="@+id/rvBlocks"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</LinearLayout>
