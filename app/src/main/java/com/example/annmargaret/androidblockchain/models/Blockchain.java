@@ -39,8 +39,8 @@ public class Blockchain {
     }
 
     public Block newBlock(String data, String url) {
-        Block latestBlock = latestBlock();
-        return new Block(latestBlock.getIndex()+1, System.currentTimeMillis(), latestBlock.getHash(), data, url);
+        Block latestBlock = this.latestBlock();
+        return new Block(latestBlock.getIndex() + 1, System.currentTimeMillis(), latestBlock.getHash(), data, url);
     }
 
     public void addBlock(Block b) {

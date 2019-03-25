@@ -45,7 +45,7 @@ public class ForgotPasswordActivity extends AppCompatActivity {
                 String email = email_input.getText().toString();
 
                 if(TextUtils.isEmpty(email)){
-                    Toast.makeText(getApplicationContext(),"Please fill e-mail",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),R.string.new_password_no_email,Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -54,13 +54,13 @@ public class ForgotPasswordActivity extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 if(task.isSuccessful()){
-                                    Toast.makeText(getApplicationContext(),"Password reset link was sent your email address",Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getApplicationContext(),R.string.new_password_success,Toast.LENGTH_SHORT).show();
                                     Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
                                     startActivity(intent);
                                     overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
                                 }
                                 else{
-                                    Toast.makeText(getApplicationContext(),"Mail sending error",Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getApplicationContext(),R.string.new_password_failure,Toast.LENGTH_SHORT).show();
                                 }
                             }
                         });

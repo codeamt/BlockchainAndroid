@@ -5,7 +5,7 @@ public class Utils {
         StringBuilder builder = new StringBuilder();
 
         for(int i = 0; i < length; i++) {
-            builder.append('0');
+            builder.append(String.valueOf(0));
         }
 
         return builder.toString();

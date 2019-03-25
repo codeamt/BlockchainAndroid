@@ -34,7 +34,7 @@ public class AccountActivity extends AppCompatActivity {
         if(getSupportActionBar() != null) {
             getSupportActionBar().setHomeButtonEnabled(true);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            getSupportActionBar().setTitle("Your Account");
+            getSupportActionBar().setTitle(R.string.account_toolbar_title);
         }
         mAuth = FirebaseAuth.getInstance();
         authStateListener = new FirebaseAuth.AuthStateListener() {
@@ -60,7 +60,7 @@ public class AccountActivity extends AppCompatActivity {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if(task.isSuccessful()) {
-                                        Toast.makeText(getApplicationContext(), "User Deleted", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(getApplicationContext(), R.string.auth_delete_user, Toast.LENGTH_SHORT).show();
                                         startActivity(new Intent(getApplicationContext(), RegisterActivity.class));
                                         overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
                                         finish();

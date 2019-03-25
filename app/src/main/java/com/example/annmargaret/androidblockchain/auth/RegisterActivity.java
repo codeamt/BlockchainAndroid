@@ -63,26 +63,26 @@ public class RegisterActivity extends AppCompatActivity {
                 if(email.getText() == null || password.getText() == null) {
                     Intent intent = new Intent(getApplicationContext(), RegisterActivity.class);
                     startActivity(intent);
-                    Toast.makeText(getApplicationContext(), "Please enter an email", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), R.string.reg_no_email, Toast.LENGTH_SHORT).show();
 
                 }
                 else if(TextUtils.isEmpty(email_input)) {
                     Intent intent = new Intent(getApplicationContext(), RegisterActivity.class);
                     startActivity(intent);
                     overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
-                    Toast.makeText(getApplicationContext(), "Please enter an email", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), R.string.reg_no_email, Toast.LENGTH_SHORT).show();
 
                 }
                 else if(TextUtils.isEmpty(password_input)) {
                     Intent intent = new Intent(getApplicationContext(), RegisterActivity.class);
                     startActivity(intent);
                     overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
-                    Toast.makeText(getApplicationContext(), "Please choose a password", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), R.string.reg_no_psswd, Toast.LENGTH_SHORT).show();
 
                 }
                 else if(password_input.length() < 6) {
                     password.setText("");
-                    Toast.makeText(getApplicationContext(), "Passwords should be at least 6 characters", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), R.string.reg_psswd_short, Toast.LENGTH_SHORT).show();
 
                 }
                 else {
@@ -98,7 +98,7 @@ public class RegisterActivity extends AppCompatActivity {
                                         //updateUI(user);
                                     } else {
                                         // If sign in fails, display a message to the user.
-                                        Toast.makeText(RegisterActivity.this, "Authentication failed.",
+                                        Toast.makeText(RegisterActivity.this, R.string.reg_failure,
                                                 Toast.LENGTH_SHORT).show();
 
                                     }

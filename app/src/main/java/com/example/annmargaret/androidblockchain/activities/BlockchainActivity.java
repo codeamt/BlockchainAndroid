@@ -1,7 +1,11 @@
 package com.example.annmargaret.androidblockchain.activities;
 
+import android.arch.lifecycle.Observer;
+import android.arch.lifecycle.ViewModelProvider;
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,6 +15,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.annmargaret.androidblockchain.db.BlocksViewModel;
 import com.example.annmargaret.androidblockchain.utils.BlockAdapter;
 import com.example.annmargaret.androidblockchain.BlockchainServer;
 import com.example.annmargaret.androidblockchain.R;
@@ -39,6 +44,7 @@ public class BlockchainActivity extends AppCompatActivity {
     private FirebaseAnalytics mFirebaseAnalytics;
     private FirebaseAuth mAuth;
     ArrayList<String> blockStats  = new ArrayList<String>();
+    BlocksViewModel model;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,36 +56,36 @@ public class BlockchainActivity extends AppCompatActivity {
         FirebaseUser currentUser = mAuth.getCurrentUser();
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
         blockchain = blockchainServer.getBlockchain();
-        //chain = blockchain.blocks;
+        recycler = findViewById(R.id.rvBlocks);
+        model = ViewModelProviders.of(this).get(BlocksViewModel.class);
+        layoutManager = new LinearLayoutManager(this);
+        recycler.setLayoutManager(layoutManager);
         AsyncTask.execute(new Runnable() {
             @Override
             public void run() {
-                chain = reverseList(blockchainServer.getBlockDao().getAllBlocks());
+                chain = reverseList(blockchainServer.getBlocks());
             }
         });
         blockAdapter = new BlockAdapter(chain, this);
-        layoutManager = new LinearLayoutManager(this);
-        recycler = findViewById(R.id.rvBlocks);
         recycler.setAdapter(blockAdapter);
-        recycler.setLayoutManager(layoutManager);
-
-
         //for home widget
         AsyncTask.execute(new Runnable() {
             @Override
             public void run() {
-                String size = "Blockchain Size: " + Integer.toString(chain.size());
-                String diff = "Difficulty: " + Integer.toString(blockchain.difficulty);
-                blockStats.add(size);
-                blockStats.add(diff);
-                if(blockchain.blocks.size() != 0 && blockchain.blocks.size() != 1) {
-                    Block mostRecent = blockchain.blocks.get(blockchain.blocks.size() - 1);
-                    Log.d("RECENT BLOCK: ", mostRecent.toString());
-                    blockStats.add("Latest Block: " + mostRecent.toString());
-                } else {
-                    blockStats.add("No blocks have been mined yet");
+                if (chain != null) {
+                    String size = R.string.stat_size + Integer.toString(chain.size());
+                    String diff = R.string.stat_diff + Integer.toString(blockchain.difficulty);
+                    blockStats.add(size);
+                    blockStats.add(diff);
+                    if (blockchain.blocks.size() != 0 && blockchain.blocks.size() != 1) {
+                        Block mostRecent = blockchain.blocks.get(blockchain.blocks.size() - 1);
+                        Log.d("LATEST BLOCK: ", mostRecent.toString());
+                        blockStats.add(R.string.stat_latest + mostRecent.toString());
+                    } else {
+                        blockStats.add(getResources().getString(R.string.stat_none));
+                    }
+                    UpdateBlockchainService.startBlockService(getApplicationContext(), blockStats);
                 }
-                UpdateBlockchainService.startBlockService(getApplicationContext(), blockStats);
             }
         });
     }
@@ -92,20 +98,20 @@ public class BlockchainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-            AsyncTask.execute(new Runnable() {
-                @Override
-                public void run() {
-                    if(chain != null) {
-                        chain = reverseList(blockchainServer.getBlockDao().getAllBlocks());//blockchainServer.getBlockchain().blocks);
-                        blockAdapter.setBlocks(chain);
-                        recycler.setAdapter(blockAdapter);
-                    }
-                    List<Block> tempList = new ArrayList<Block>(blockchainServer.getBlockDao().getAllBlocks());
+        AsyncTask.execute(new Runnable() {
+            @Override
+            public void run() {
+                if(chain != null) {
+                    chain = reverseList(blockchainServer.getBlockDao().getAllBlocks());
+                    blockAdapter.setBlocks(chain);
+                    recycler.setAdapter(blockAdapter);
+                    List<Block> tempList = new ArrayList<Block>(chain);
                     for(Block b : tempList) {
                         Log.d("DB Check", b.toString());
                     }
                 }
-            });
+            }
+        });
     }
 
     @Override

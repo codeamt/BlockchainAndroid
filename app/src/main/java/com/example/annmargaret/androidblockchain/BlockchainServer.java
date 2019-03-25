@@ -41,12 +41,12 @@ public class BlockchainServer extends Application {
                 BlockDao blockDao = server.getBlockDB().daoAccess();
 
                 if(blockDao.getAllBlocks().size() == 0 ) {
-                    Block genesis = new Block(0, System.currentTimeMillis(), null, "First Block", null);
+                    Block genesis = new Block(0, System.currentTimeMillis(), null, getResources().getString(R.string.genesis_data), null);
                     genesis.mineBlock(blockchain.difficulty);
                     blockchain.blocks.add(genesis);
 
 
-                    Block seed1 = new Block(1, System.currentTimeMillis(), genesis.getHash(), "Seed 1", "https://firebasestorage.googleapis.com/v0/b/android-blockchain.appspot.com/o/image_00005.jpg?alt=media&token=3d87f1cc-d0f6-47fd-9e98-ab8978bec713");
+                    Block seed1 = new Block(1, System.currentTimeMillis(), genesis.getHash(), getResources().getString(R.string.seed1_data), "https://firebasestorage.googleapis.com/v0/b/android-blockchain.appspot.com/o/image_00005.jpg?alt=media&token=3d87f1cc-d0f6-47fd-9e98-ab8978bec713");
                     seed1.mineBlock(blockchain.difficulty);
                     if(blockchain.isValidNewBlock(seed1, blockchain.latestBlock())
                             && blockchain.isBlockChainValid()) {
@@ -54,7 +54,7 @@ public class BlockchainServer extends Application {
                     }
 
 
-                    Block seed2 = new Block(2, System.currentTimeMillis(), seed1.getHash(), "Seed 2", "https://firebasestorage.googleapis.com/v0/b/android-blockchain.appspot.com/o/image_08127.jpg?alt=media&token=efe1112f-66f4-405a-931e-aa99d257f02e");
+                    Block seed2 = new Block(2, System.currentTimeMillis(), seed1.getHash(), getResources().getString(R.string.seed2_data), "https://firebasestorage.googleapis.com/v0/b/android-blockchain.appspot.com/o/image_08127.jpg?alt=media&token=efe1112f-66f4-405a-931e-aa99d257f02e");
                     seed2.mineBlock(blockchain.difficulty);
                     if(blockchain.isValidNewBlock(seed2, blockchain.latestBlock())
                             && blockchain.isBlockChainValid()) {

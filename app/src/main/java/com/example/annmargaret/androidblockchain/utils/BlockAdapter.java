@@ -48,7 +48,7 @@ public class BlockAdapter extends RecyclerView.Adapter<BlockAdapter.BlockViewHol
             Long timestamp = block.getTimestamp();
             assert timestamp.toString() != null;
             String formattedTimeStamp = DateFormat.getInstance().format(timestamp);
-            holder.index.setText(Integer.toString(block.getIndex()));
+            holder.index.setText(String.valueOf(block.getIndex()));
             holder.timestamp.setText(formattedTimeStamp);
             holder.hash.setText(block.getHash());
             holder.data.setText(block.getData());

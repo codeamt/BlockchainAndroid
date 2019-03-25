@@ -41,35 +41,44 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                String email_input = loginEmail.getText().toString();
-                String password_input = loginPassword.getText().toString();
+                String email_input = loginEmail.getText().toString().trim();
+                String password_input = loginPassword.getText().toString().trim();
 
-                if(TextUtils.isEmpty(email_input)) {
-                    Toast.makeText(getApplicationContext(), "Please enter your email", Toast.LENGTH_SHORT).show();
+                if(TextUtils.isEmpty(email_input) || TextUtils.isEmpty(password_input)) {
+                    Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                    startActivity(intent);
+                    Toast.makeText(getApplicationContext(), R.string.reg_no_email, Toast.LENGTH_SHORT).show();
+
                 }
 
-                if(TextUtils.isEmpty(password_input)) {
-                    Toast.makeText(getApplicationContext(), "Please enter your password", Toast.LENGTH_SHORT).show();
+                else if(TextUtils.isEmpty(email_input)) {
+                    Toast.makeText(getApplicationContext(), R.string.login_no_email, Toast.LENGTH_SHORT).show();
                 }
 
-                mAuth.signInWithEmailAndPassword(loginEmail.getText().toString(), loginPassword.getText().toString())
-                        .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                if (task.isSuccessful()) {
-                                    // Sign in success, update UI with the signed-in user's information
-                                    FirebaseUser user = mAuth.getCurrentUser();
-                                    startActivity(new Intent(getApplicationContext(),BlockchainActivity.class));
-                                    overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+                else if(TextUtils.isEmpty(password_input)) {
+                    Toast.makeText(getApplicationContext(), R.string.login_no_psswd, Toast.LENGTH_SHORT).show();
+                }
+                else {
 
-                                } else {
-                                    // If sign in fails, display a message to the user.
-                                    Toast.makeText(LoginActivity.this, "Authentication failed.",
-                                            Toast.LENGTH_SHORT).show();
+                    mAuth.signInWithEmailAndPassword(loginEmail.getText().toString(), loginPassword.getText().toString())
+                            .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                    if (task.isSuccessful()) {
+                                        // Sign in success, update UI with the signed-in user's information
+                                        FirebaseUser user = mAuth.getCurrentUser();
+                                        startActivity(new Intent(getApplicationContext(), BlockchainActivity.class));
+                                        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
 
+                                    } else {
+                                        // If sign in fails, display a message to the user.
+                                        Toast.makeText(LoginActivity.this, R.string.login_failure,
+                                                Toast.LENGTH_SHORT).show();
+
+                                    }
                                 }
-                            }
-                        });
+                            });
+                }
             }
         });
 

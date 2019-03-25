@@ -4,6 +4,33 @@
     <string name="title_activity_login">Sign in</string>
     <string name="logo_description">Android Blockchain Logo</string>
 
+
+    <!-- Java Strings (Toasts) -->
+    <string name="auth_delete_user">User Deleted.</string>
+    <string name="uri_not_found">Could not get file uri.</string>
+    <string name="stat_size">Blockchain Height: </string>
+    <string name="stat_diff">Difficulty: </string>
+    <string name="stat_latest">Latest Block: </string>
+    <string name="stat_none">No blocks have been mined yet.</string>
+    <!-- Java Strings (Mine Block Toasts) -->
+    <string name="nb_no_data">Please enter a data message</string>
+    <string name="nb_mine">Mining&#8230;</string>
+    <string name="nb_block_error">Could not mine block.</string>
+    <string name="nb_block_create_error">Something went wrrong. Please try again.</string>
+    <string name="nb_upload_dialog">Uploading Image&#8230;</string>
+    <string name="nb_upload_fail">Failed: </string>
+    <string name="nb_upload_success">Uploaded.</string>
+    <!-- Java Strings (Blockchain Seeds) -->
+    <string name="genesis_data">First Block.</string>
+    <string name="seed1_data">Seed 1</string>
+    <string name="seed2_data">Seed 2</string>
+
+
+    <!-- For XML -->
+    <string name="main_menu_acct">Account</string>
+    <string name="main_menu_nb">New Block</string>
+    <string name="block_menu">Share Block</string>
+
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password (optional)</string>
@@ -16,13 +43,19 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
-
+    <string name="login_no_email">Please enter your email</string>
+    <string name="login_no_psswd">Please enter your password</string>
+    <string name="login_failure">Authentication failed.</string>
     <!-- for register activity -->
     <string name="reg_email_hint">E-Mail</string>
     <string name="reg_pw_hint">Password</string>
     <string name="reg_button">Register Me</string>
     <string name="reg_login_button">Returning User</string>
     <string name="reg_forgot_pw">I Forgot My Password</string>
+    <string name="reg_no_email">Please enter an email</string>
+    <string name="reg_no_psswd">Please enter your password</string>
+    <string name="reg_psswd_short">Passwords should be at least 6 characters</string>
+    <string name="reg_failure">Registration failed.</string>
 
     <!-- for login activity -->
     <string name="login_email_hint">E-Mail</string>
@@ -34,12 +67,15 @@
     <!-- for account activity -->
     <string name="account_delete">Delete User</string>
     <string name="account_logout">Logout</string>
+    <string name="account_toolbar_title">Your Account</string>
 
     <!-- forgot password activity -->
     <string name="new_password_hint">E-Mail</string>
     <string name="new_password_button">Send New Password Link</string>
     <string name="b2login">Back to Login</string>
-
+    <string name="new_password_no_email">Please enter an email.</string>
+    <string name="new_password_success">Password reset link was sent your email address.</string>
+    <string name="new_password_failure">Mail sending error.</string>
     <!-- for blockchain activity -->
     <string name="blockchain_activity_header">Blocks</string>
 
@@ -47,8 +83,9 @@
     <string name="bc_index">Block Index: </string>
     <string name="bc_time">Timestamp: </string>
     <string name="bc_hash">Hash: </string>
+    <string name="bc_content_desc">Paperclip Icon</string>
     <string name="bc_message">Data Message: </string>
-    <string name="bc_load">Loading...</string>
+    <string name="bc_load">Loading&#8230;</string>
 
     <!-- for view block activity -->
     <string name="block_activity_header">Block Details</string>
@@ -58,20 +95,23 @@
     <string name="block_prev">Hash of Previous Block: </string>
     <string name="block_data">Block Data: </string>
     <string name="block_attach">Attachment</string>
+    <string name="block_toolbar_title">Block Details</string>
 
     <!-- for new block activity -->
     <string name="new_message">Block Message</string>
-    <string name="new_message_hint">Enter a message for the block...</string>
+    <string name="new_message_hint">Enter a message for the block&#8230;</string>
     <string name="new_attach_header">Add an image file to the Block</string>
     <string name="new_choose">Choose Image</string>
     <string name="new_mine_button">Mine Block</string>
     <string name="preview">Image Preview</string>
+    <string name="intent_title">Select Picture</string>
+    <string name="new_toolbar_title">Block Miner</string>
 
     <!-- for widget (before) -->
-    <string name="widget_before_header">Fetching Blockchain Stats. Please wait...</string>
+    <string name="widget_before_header">Fetching Blockchain Stats. Please wait&#8230;</string>
     <!-- for widget (after) -->
     <string name="widget_intro">Blockchain Stats</string>
-    <string name="widget_placeholder">Loading...</string>
+    <string name="widget_placeholder">Loading&#8230;</string>
 
 
 

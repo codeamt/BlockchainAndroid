@@ -77,6 +77,7 @@
 
             <ImageView
                 android:id="@+id/attachmentIcon"
+                android:contentDescription="@string/bc_content_desc"
                 android:layout_width="@dimen/space50dp"
                 android:layout_height="0dp"
                 android:layout_gravity="bottom|end"

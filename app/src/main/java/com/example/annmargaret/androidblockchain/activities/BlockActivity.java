@@ -46,7 +46,7 @@ public class BlockActivity extends AppCompatActivity {
         if(getSupportActionBar() != null) {
             getSupportActionBar().setHomeButtonEnabled(true);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            getSupportActionBar().setTitle("Block Details");
+            getSupportActionBar().setTitle(R.string.block_toolbar_title);
         }
 
         storage = FirebaseStorage.getInstance();
@@ -59,7 +59,7 @@ public class BlockActivity extends AppCompatActivity {
         blockData = (TextView) findViewById(R.id.block_details_data);
         blockFile = (ImageView) findViewById(R.id.blockFile);
         blockInDetail = (Block) Parcels.unwrap(getIntent().getParcelableExtra("block"));
-        index.setText(Integer.toString(blockInDetail.getIndex()));
+        index.setText(String.valueOf(blockInDetail.getIndex()));
         timestamp.setText(DateFormat.getInstance().format(blockInDetail.getTimestamp()));
         hash.setText(blockInDetail.getHash());
         prevHash.setText(blockInDetail.getPreviousHash());
@@ -79,7 +79,7 @@ public class BlockActivity extends AppCompatActivity {
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
-                    Toast.makeText(getApplicationContext(), "Could not get file uri.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), R.string.uri_not_found, Toast.LENGTH_SHORT).show();
                     Glide.with(getApplicationContext())
                             .load(R.drawable.ic_action_name)
                             .into(blockFile);

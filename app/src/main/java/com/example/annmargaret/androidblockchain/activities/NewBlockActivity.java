@@ -63,7 +63,7 @@ public class NewBlockActivity extends AppCompatActivity {
         if(getSupportActionBar() != null) {
             getSupportActionBar().setHomeButtonEnabled(true);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            getSupportActionBar().setTitle("Block Miner");
+            getSupportActionBar().setTitle(R.string.new_toolbar_title);
         }
         imgPreview = (ImageView) findViewById(R.id.img_preview);
         mAuth = FirebaseAuth.getInstance();
@@ -77,8 +77,8 @@ public class NewBlockActivity extends AppCompatActivity {
             }
         });
 
-
         blockchain = blockchainServer.getBlockchain();
+
 
         //grab views
         newData = findViewById(R.id.newBlockData);
@@ -94,28 +94,29 @@ public class NewBlockActivity extends AppCompatActivity {
                 if (TextUtils.isEmpty(newData.getText())) {
                     Intent intent = new Intent(getApplicationContext(), NewBlockActivity.class);
                     startActivity(intent);
-                    Toast.makeText(getApplicationContext(), "Please enter a data message", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), R.string.nb_no_data, Toast.LENGTH_SHORT).show();
                 }
 
-                if (filepath.toString() == null) {
-                    Log.d("FP inside mine button listener: ", filepath.toString());
-                    persistedURL = null;
-                    Log.d("Final URL: ", persistedURL.toString());
-                } else {
-                    Log.d("non-null FP inside mine button listener: ", filepath.toString());
-                    uploadImage();
+                if (filepath != null) {
+                    if(filepath.toString() == null) {
+                        Log.d("FP inside mine button listener: ", filepath.toString());
+                        persistedURL = null;
+                    } else {
+                        Log.d("non-null FP inside mine button listener: ", filepath.toString());
+                        uploadImage();
+                    }
                 }
 
-                Toast.makeText(getApplicationContext(), "Mining Block...", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), R.string.nb_mine, Toast.LENGTH_SHORT).show();
 
-                if (blockchain != null && imgRef != null) {
+                if (blockchainServer!= null &&  imgRef != null) {
                     persistedURL = imgRef.getPath();
                     if(!persistedURL.isEmpty()) {
+
                         Log.d("Final URL: ", persistedURL);
                         Block block = blockchain.newBlock(newData.getText().toString().trim(), persistedURL) ;
                         Log.d("block-url:", block.getFileUrl());
-                        //blockchainServer.server.addBlock(block);
-                        //blockchain.addBlock(block);
+
                         AsyncTask.execute(new Runnable() {
                             @Override
                             public void run() {
@@ -127,11 +128,12 @@ public class NewBlockActivity extends AppCompatActivity {
                         Intent intent = new Intent(getApplicationContext(), BlockchainActivity.class);
                         startActivity(intent);
                         overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+
                     } else {
-                        Toast.makeText(getApplicationContext(), "Could not mine block.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), R.string.nb_block_error, Toast.LENGTH_SHORT).show();
                     }
                 } else {
-                    Toast.makeText(getApplicationContext(), "Something went wrrong. Please try again.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), R.string.nb_block_create_error, Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -173,7 +175,7 @@ public class NewBlockActivity extends AppCompatActivity {
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST);
+        startActivityForResult(Intent.createChooser(intent, getResources().getString(R.string.intent_title)), PICK_IMAGE_REQUEST);
     }
 
     @Override
@@ -201,7 +203,7 @@ public class NewBlockActivity extends AppCompatActivity {
     private void uploadImage() {
         if(filepath.toString() != null && mAuth.getCurrentUser() != null) {
             final ProgressDialog progressDialog = new ProgressDialog(this);
-            progressDialog.setTitle("Uploading Image...");
+            progressDialog.setTitle(R.string.nb_upload_dialog);
             progressDialog.show();
 
             ref = storageReference.child("images/" + mAuth.getCurrentUser().getUid());
@@ -213,7 +215,7 @@ public class NewBlockActivity extends AppCompatActivity {
                 public void onFailure(@NonNull Exception e) {
                     // Handle unsuccessful uploads
                     progressDialog.dismiss();
-                    Toast.makeText(NewBlockActivity.this, "Failed: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(NewBlockActivity.this, R.string.nb_upload_fail + e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
@@ -223,7 +225,7 @@ public class NewBlockActivity extends AppCompatActivity {
                         //persistedURL = imgRef.getPath();
                         Log.d("URL", imgRef.getPath());
                         progressDialog.dismiss();
-                        Toast.makeText(NewBlockActivity.this, "Uploaded.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(NewBlockActivity.this, R.string.nb_upload_success, Toast.LENGTH_SHORT).show();
                     }
                 }
             });
